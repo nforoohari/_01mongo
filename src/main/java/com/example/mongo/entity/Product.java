@@ -1,23 +1,17 @@
 package com.example.mongo.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+import org.springframework.data.annotation.Id;
 import java.math.BigDecimal;
+import lombok.*;
 
-@Document
 @Getter
 @Setter
 @ToString
+@Document
 public class Product {
     @Id
     private String id;
     private String name;
     private BigDecimal price;
-
-
-
 }

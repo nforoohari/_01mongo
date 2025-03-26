@@ -1,18 +1,17 @@
 package com.example.mongo.repository;
 
-import com.example.mongo.entity.Product;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.repository.query.Param;
-
+import java.math.BigDecimal;
 import java.util.List;
+import com.example.mongo.entity.Product;
 
-public interface ProductRepository extends MongoRepository<Product,String> {
-    //finder  yes
+public interface ProductRepository extends MongoRepository<Product, String> {
+
+    //finder(query) methods
     List<Product> findByName(String name);
-    //jpql    @@uery
-    @Query("{ 'name' : ?0}")
-    List<Product> findByName2(@Param("name") String name);
-    //
 
+    //jpql style methods
+    @Query("{  'name' : ?0, 'price' : ?1}")
+    List<Product> findByMyParams(String n, BigDecimal p);
 }
